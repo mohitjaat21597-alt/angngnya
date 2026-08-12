@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Angngnya ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;background:linear-gradient(135deg,#ffd6e7,#fff5f8)}
+.card{width:90%;max-width:430px;text-align:center;padding:35px 22px;border-radius:28px;background:rgba(255,255,255,.9);box-shadow:0 15px 45px rgba(190,50,100,.2)}
+.heart{font-size:82px;animation:beat 1s infinite}@keyframes beat{50%{transform:scale(1.18)}}
+h1{color:#e91e63;font-size:30px;margin:16px 0 10px}p{color:#704454;font-size:18px;line-height:1.6}
+button{border:0;border-radius:50px;padding:14px 28px;font-size:18px;font-weight:bold;cursor:pointer}
+#start,#yes{background:#e91e63;color:white}#question,#success{display:none}
+#game{position:relative;height:150px;margin-top:15px}#no{background:#777;color:white;position:absolute;left:55%;top:0;transition:.12s}
+.float{position:fixed;bottom:-30px;font-size:22px;animation:up 6s linear infinite;pointer-events:none}
+@keyframes up{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+</style>
+</head>
+<body>
+<div id="hearts"></div>
+<div class="card">
+<div id="intro">
+<div class="heart">❤️</div>
+<h1>Angngnyaa… 🥺💗</h1>
+<p>Tum bohot acche ho…<br>sach mein bohot zyada. ✨<br><br>Aur tum mere liye thode se special ho. 🫶</p>
+<button id="start">Tap Here 💕</button>
+</div>
+<div id="question">
+<div class="heart" style="font-size:65px">💖</div>
+<h1>Ek chhota sa question…</h1>
+<p><b>Do you like me? 👀❤️</b></p>
+<div id="game"><button id="yes">YES 💗</button><button id="no">NO 🙈</button></div>
+</div>
+<div id="success">
+<div style="font-size:70px">🎉💖✨</div>
+<h1>Congratulations! 🥰</h1>
+<p>Mujhe pata tha! 😭❤️<br><br><b>You chose the right answer. 💕</b><br>Ab ek cute si smile toh banti hai 😌</p>
+<div style="font-size:35px">💗 🫶 💗</div>
+</div>
+</div>
+<script>
+const intro=document.getElementById("intro"),question=document.getElementById("question"),success=document.getElementById("success");
+document.getElementById("start").onclick=()=>{intro.style.display="none";question.style.display="block"};
+const no=document.getElementById("no"),game=document.getElementById("game");
+function moveNo(){no.style.left=Math.max(0,Math.random()*(game.clientWidth-no.offsetWidth))+"px";no.style.top=Math.max(0,Math.random()*(game.clientHeight-no.offsetHeight))+"px"}
+no.addEventListener("mouseenter",moveNo);no.addEventListener("touchstart",e=>{e.preventDefault();moveNo()});no.onclick=moveNo;
+document.getElementById("yes").onclick=()=>{question.style.display="none";success.style.display="block"};
+for(let i=0;i<20;i++){let h=document.createElement("div");h.className="float";h.textContent=["💗","💕","❤️","✨","💖"][Math.floor(Math.random()*5)];h.style.left=Math.random()*100+"vw";h.style.animationDelay=Math.random()*6+"s";document.getElementById("hearts").appendChild(h)}
+</script>
+</body>
+</html>
